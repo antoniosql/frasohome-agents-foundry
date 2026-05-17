@@ -73,7 +73,7 @@ def create_all_agents(*, dry_run: bool = False) -> dict[str, object]:
         csv_file_ids.append(_id_from_upload(uploaded))
         console.print(f"Uploaded CSV: {path.name}")
 
-    data_quality_tool = CodeInterpreterTool(file_ids=csv_file_ids)
+    data_quality_tool = CodeInterpreterTool(container={"file_ids": csv_file_ids, "type": "auto"})
     data_quality = runtime.create_prompt_agent(settings.data_quality_agent, DATA_QUALITY_INSTRUCTIONS, [data_quality_tool])
 
     # These specialists can operate from orchestrated context. Attach File Search too so they can query KB directly.

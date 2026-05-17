@@ -100,8 +100,6 @@ Devuelve JSON válido:
 
 KNOWLEDGE_PROMPT = "Un cliente compró un sofá online, quiere devolverlo en tienda y usó un cupón. ¿Qué pasos debe seguir atención al cliente?"
 
-DATA_QUALITY_PROMPT = """\
-Analiza los CSV de FraSoHome. Genera un Data Quality Report con: filas y columnas por archivo, nulos críticos, duplicados, claves sin correspondencia, fechas fuera de rango, importes/cantidades anómalas y cinco acciones de limpieza priorizadas. Usa el diccionario de KPI, la taxonomía SKU y la política de devoluciones de la KB como referencia de reglas. Devuelve tabla resumen y recomendaciones.
-"""
+DATA_QUALITY_PROMPT = """Analiza los CSV de FraSoHome. Genera un Data Quality Report con: filas y columnas por archivo, nulos críticos, duplicados, claves sin correspondencia, fechas fuera de rango, importes/cantidades anómalas y cinco acciones de limpieza priorizadas. Usa el diccionario de KPI, la taxonomía SKU y la política de devoluciones de la KB como referencia de reglas. Devuelve tabla resumen y recomendaciones."""
 
 MULTI_AGENT_PROMPT = "¿Por qué están subiendo las devoluciones online en iluminación y qué haríamos esta semana?"

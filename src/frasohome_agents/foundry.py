@@ -33,34 +33,11 @@ class FoundryRuntime:
         )
 
     def upload_file(self, path: Path, purpose: str = "assistants") -> Any:
-        files_client = getattr(self.project, "files", None)
-        if files_client is None:
-            raise RuntimeError("This azure-ai-projects SDK version does not expose project.files.")
-        if hasattr(files_client, "upload"):
-            return files_client.upload(file_path=str(path), purpose=purpose)
-        if hasattr(files_client, "upload_and_poll"):
-            return files_client.upload_and_poll(file_path=str(path), purpose=purpose)
-        raise RuntimeError("This azure-ai-projects SDK version does not expose files.upload or files.upload_and_poll.")
+        with path.open("rb") as file:
+            return self.openai.files.create(file=file, purpose=purpose)
 
     def create_vector_store(self, name: str, file_ids: list[str]) -> Any:
-        candidates = [
-            getattr(self.project, "vector_stores", None),
-            getattr(self.project, "vectorstores", None),
-        ]
-        for client in candidates:
-            if client is None:
-                continue
-            if hasattr(client, "create"):
-                try:
-                    return client.create(name=name, file_ids=file_ids)
-                except TypeError:
-                    return client.create(name=name, files=file_ids)
-            if hasattr(client, "create_and_poll"):
-                return client.create_and_poll(name=name, file_ids=file_ids)
-        raise RuntimeError(
-            "Could not create a vector store with the installed SDK. "
-            "Create one in Foundry Portal or SDK and set FRASOHOME_VECTOR_STORE_ID."
-        )
+        return self.openai.vector_stores.create(name=name, file_ids=file_ids)
 
     def run_agent(self, agent_name: str, prompt: str, *, store: bool = True) -> Any:
         return self.openai.responses.create(
