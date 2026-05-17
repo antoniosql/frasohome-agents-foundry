@@ -23,10 +23,10 @@ Usar estos archivos como unica fuente local de verdad:
 - `case/fraso_home_storytelling_foundry.md`
 - `case/plan_sesion_practica_foundry_frasohome.md`
 - `case/kb/README.md`
-- `case/kb/markdown/*.md`
+- `case/kb/FS-KB-*.md`
 - `case/data/*.csv`
 
-La base de conocimiento `case/kb/markdown` contiene las politicas operativas de FraSoHome:
+La base de conocimiento `case/kb` contiene las politicas operativas de FraSoHome:
 
 - `FS-KB-01_Politica_Devoluciones_v1.3_Vigente.md`: devoluciones omnicanal, plazos, excepciones, reembolsos, costes y escalado.
 - `FS-KB-03_Diccionario_KPI_Reglas_Calculo_v1.0.md`: KPIs y reglas de calculo.
@@ -134,14 +134,14 @@ Documentos iniciales:
 - `case/fraso_home_caso.md`
 - `case/fraso_home_storytelling_foundry.md`
 - `case/kb/README.md`
-- Todos los Markdown de `case/kb/markdown/*.md`
+- Todos los Markdown de `case/kb/FS-KB-*.md`
 
 Instrucciones:
 
 ```text
 Eres el agente Knowledge de FraSoHome. Responde como asistente de operaciones para un retailer omnicanal de hogar y decoracion.
 
-Usa solo el conocimiento proporcionado por los documentos conectados. Prioriza las politicas de `case/kb/markdown` cuando la pregunta sea normativa u operativa. Usa la narrativa del caso para contexto y la KB para reglas vigentes. Si falta una politica concreta o hay conflicto entre documentos, dilo claramente. Entrega respuestas breves, accionables y trazables.
+Usa solo el conocimiento proporcionado por los documentos conectados. Prioriza las politicas de `case/kb/FS-KB-*.md` cuando la pregunta sea normativa u operativa. Usa la narrativa del caso para contexto y la KB para reglas vigentes. Si falta una politica concreta o hay conflicto entre documentos, dilo claramente. Entrega respuestas breves, accionables y trazables.
 
 Formato de salida:
 - Respuesta
@@ -287,7 +287,7 @@ En Portal:
 
 1. Crear `frasohome-knowledge`.
 2. Pegar las instrucciones del agente.
-3. Subir documentos Markdown del caso y todos los Markdown de `case/kb/markdown`.
+3. Subir documentos Markdown del caso y todos los Markdown de `case/kb/FS-KB-*.md`.
 4. Activar File Search.
 5. Ejecutar prompt de validacion.
 6. Mostrar evidencia y limitaciones.
@@ -419,7 +419,7 @@ La sesion practica esta lista cuando:
 - Las respuestas incluyen evidencia o calculo.
 - La demo muestra al menos una traza, tool call o historial de ejecucion.
 - El informe de calidad usa datos reales de `case/data`.
-- Las respuestas normativas citan o resumen politicas de `case/kb/markdown`.
+- Las respuestas normativas citan o resumen politicas de `case/kb/FS-KB-*.md`.
 - El flujo multiagente devuelve JSON valido.
 - Las incertidumbres y validaciones humanas quedan explicitas.
 - No hay secretos en prompts, codigo, salidas ni telemetria.
@@ -434,3 +434,4 @@ La sesion practica esta lista cuando:
 - Tracing setup: https://learn.microsoft.com/en-us/azure/foundry/observability/how-to/trace-agent-setup?view=foundry
 - Agent Monitoring Dashboard: https://learn.microsoft.com/en-us/azure/foundry/observability/how-to/how-to-monitor-agents-dashboard
 - Microsoft Agent Framework provider for Foundry: https://learn.microsoft.com/es-es/agent-framework/agents/providers/microsoft-foundry
+

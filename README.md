@@ -78,8 +78,7 @@ Contrato de salida recomendado:
 │   └── kb/
 │       ├── README.md
 │       ├── *.docx
-│       └── markdown/
-│           └── *.md
+│       ├── FS-KB-*.md
 └── src/
     └── frasohome_agents/
         ├── cli.py
@@ -107,7 +106,7 @@ Para el agente `frasohome-knowledge`, cargar en File Search:
 - `case/fraso_home_caso.md`
 - `case/fraso_home_storytelling_foundry.md`
 - `case/kb/README.md`
-- todos los archivos de `case/kb/markdown/*.md`
+- todos los archivos de `case/kb/FS-KB-*.md`
 
 ## Datos
 
@@ -239,3 +238,4 @@ Multiagente:
 ## Nota
 
 FraSoHome es un caso ficticio con datos sintéticos. Está diseñado para demos, formación y hackathons sobre agentes, preparación de datos, grounding, workflows y evaluación en Microsoft Foundry.
+

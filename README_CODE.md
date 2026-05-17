@@ -37,7 +37,7 @@ Esto comprueba:
 - `case/fraso_home_caso.md`
 - `case/fraso_home_storytelling_foundry.md`
 - `case/kb/README.md`
-- `case/kb/markdown/*.md`
+- `case/kb/FS-KB-*.md`
 - `case/data/*.csv`
 
 ## 3. Validar datos sin Azure
@@ -132,3 +132,4 @@ src/frasohome_agents/
 - Trata trazas como telemetría de producción: minimiza PII y controla retención.
 - Versiona prompts e instrucciones.
 - Añade evaluación automática antes de publicar o promover agentes.
+

@@ -39,7 +39,7 @@ Antes de entrar en el diseñador, valida:
   - `case/fraso_home_caso.md`
   - `case/fraso_home_storytelling_foundry.md`
   - `case/kb/README.md`
-  - `case/kb/markdown/*.md`
+  - `case/kb/FS-KB-*.md`
   - `case/data/*.csv`
 
 ## 3. Abrir el proyecto en Foundry
@@ -72,7 +72,7 @@ Eres el agente Knowledge de FraSoHome.
 Tu función es responder preguntas operativas sobre el caso FraSoHome usando solo los documentos conectados al agente. FraSoHome es un retailer omnicanal de hogar y decoración con CRM, POS, e-commerce, ERP, devoluciones, stock y problemas de calidad de datos.
 
 Prioridad documental:
-1. Políticas y guías vigentes de `case/kb/markdown`.
+1. Políticas y guías vigentes de `case/kb/FS-KB-*.md`.
 2. FAQ interna de operaciones y atención.
 3. Documento narrativo del caso.
 4. Storytelling de la presentación.
@@ -100,13 +100,13 @@ Formato de respuesta:
    - `case/fraso_home_caso.md`
    - `case/fraso_home_storytelling_foundry.md`
    - `case/kb/README.md`
-   - `case/kb/markdown/FS-KB-01_Politica_Devoluciones_v1.3_Vigente.md`
-   - `case/kb/markdown/FS-KB-03_Diccionario_KPI_Reglas_Calculo_v1.0.md`
-   - `case/kb/markdown/FS-KB-04_Manual_Tienda_Caja_y_Pagos_Mixtos_v2.1.md`
-   - `case/kb/markdown/FS-KB-05_Guia_Conciliacion_Pagos_Ecommerce_v1.4.md`
-   - `case/kb/markdown/FS-KB-06_Taxonomia_Catalogo_y_Reglas_SKU_v1.2.md`
-   - `case/kb/markdown/FS-KB-07_Guia_Fidelizacion_CRM_v1.1.md`
-   - `case/kb/markdown/FS-KB-09_FAQ_Operaciones_y_Atencion_v1.0.md`
+   - `case/kb/FS-KB-01_Politica_Devoluciones_v1.3_Vigente.md`
+   - `case/kb/FS-KB-03_Diccionario_KPI_Reglas_Calculo_v1.0.md`
+   - `case/kb/FS-KB-04_Manual_Tienda_Caja_y_Pagos_Mixtos_v2.1.md`
+   - `case/kb/FS-KB-05_Guia_Conciliacion_Pagos_Ecommerce_v1.4.md`
+   - `case/kb/FS-KB-06_Taxonomia_Catalogo_y_Reglas_SKU_v1.2.md`
+   - `case/kb/FS-KB-07_Guia_Fidelizacion_CRM_v1.1.md`
+   - `case/kb/FS-KB-09_FAQ_Operaciones_y_Atencion_v1.0.md`
 5. Espera a que los archivos queden procesados.
 6. Guarda una nueva versión del agente.
 
@@ -549,7 +549,7 @@ Foundry permite enseñar el proceso: qué decide el agente, qué calcula una her
 - [ ] Proyecto abierto en Microsoft Foundry.
 - [ ] Modelo desplegado seleccionado.
 - [ ] `frasohome-knowledge` creado.
-- [ ] File Search configurado con los Markdown del caso y toda la KB de `case/kb/markdown`.
+- [ ] File Search configurado con los Markdown del caso y toda la KB de `case/kb/FS-KB-*.md`.
 - [ ] `frasohome-data-quality` creado.
 - [ ] Code Interpreter configurado con los CSV.
 - [ ] Especialistas `returns`, `operations` y `storyteller` creados.
@@ -568,3 +568,4 @@ Foundry permite enseñar el proceso: qué decide el agente, qué calcula una her
 - Tools overview: https://learn.microsoft.com/en-us/azure/ai-foundry/agents/how-to/tools/overview
 - Workflow agents overview: https://learn.microsoft.com/es-es/azure/ai-foundry/agents/concepts/workflow?view=foundry
 - Observability: https://learn.microsoft.com/en-us/azure/foundry/concepts/observability
+

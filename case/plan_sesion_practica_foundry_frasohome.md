@@ -13,7 +13,7 @@ La sesión debe terminar con tres artefactos demostrables: agente de conocimient
 
 - Documento base: `case/fraso_home_caso.md`.
 - Storytelling de presentación: `case/fraso_home_storytelling_foundry.md`.
-- Base de conocimiento: `case/kb/README.md` y `case/kb/markdown/*.md`.
+- Base de conocimiento: `case/kb/README.md` y `case/kb/FS-KB-*.md`.
 - Datos: `case/data/*.csv`.
 - Señales iniciales reales de calidad: `ventas_pos.csv` tiene 30 duplicados, `stock_diario.csv` tiene 14 duplicados, `lineas_pedido.csv` tiene 8 duplicados, `pedidos.csv` tiene 2 duplicados y `crm.csv` tiene 1 duplicado. Hay nulos repartidos en todas las fuentes, especialmente en `fact_transacciones.csv`, `ventas_pos.csv`, `stock_diario.csv`, `pagos_tienda.csv` y devoluciones.
 
@@ -51,7 +51,7 @@ Microsoft indica que el SDK actual para proyectos Foundry usa `azure-ai-projects
 
 1. Crear un agente llamado `frasohome-knowledge`.
 2. Instrucciones: responder como asistente de operaciones de FraSoHome, citar evidencia documental, reconocer incertidumbre y proponer siguiente paso operativo.
-3. Subir `case/fraso_home_caso.md`, `case/fraso_home_storytelling_foundry.md`, `case/kb/README.md` y todos los Markdown de `case/kb/markdown`.
+3. Subir `case/fraso_home_caso.md`, `case/fraso_home_storytelling_foundry.md`, `case/kb/README.md` y todos los Markdown de `case/kb/FS-KB-*.md`.
 4. Activar File Search.
 5. Probar en Playground:
 
@@ -245,7 +245,7 @@ async def orchestrate(question: str, agents: dict):
 ## Criterios de aceptación de la demo
 
 - La respuesta final cita fuente o cálculo.
-- Las respuestas operativas usan la KB de `case/kb/markdown` como fuente normativa.
+- Las respuestas operativas usan la KB de `case/kb/FS-KB-*.md` como fuente normativa.
 - Las métricas salen de los CSV, no de texto inventado.
 - El contrato JSON se valida antes de sintetizar.
 - Si falta información, el agente lo declara.
@@ -259,3 +259,4 @@ async def orchestrate(question: str, agents: dict):
 - File Search para Foundry agents: https://learn.microsoft.com/en-us/azure/foundry/agents/how-to/tools/file-search?view=foundry-classic
 - Runtime components de Foundry Agent Service: https://learn.microsoft.com/en-us/azure/foundry/agents/concepts/runtime-components
 - Microsoft Agent Framework con Foundry: https://learn.microsoft.com/es-es/agent-framework/agents/providers/microsoft-foundry
+
