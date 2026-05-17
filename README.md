@@ -68,6 +68,8 @@ Contrato de salida recomendado:
 ├── requirements.txt
 ├── pyproject.toml
 ├── .env.example
+├── notebooks/
+│   └── frasohome_foundry_agents_demo.ipynb
 ├── case/
 │   ├── fraso_home_caso.md
 │   ├── fraso_home_storytelling_foundry.md
@@ -144,6 +146,10 @@ Resumen:
 Consulta la guía detallada:
 
 [README_CODE.md](README_CODE.md)
+
+También puedes ejecutar la demo paso a paso desde el notebook:
+
+[notebooks/frasohome_foundry_agents_demo.ipynb](notebooks/frasohome_foundry_agents_demo.ipynb)
 
 Preparación rápida:
 
@@ -236,4 +242,3 @@ Multiagente:
 ## Nota
 
 FraSoHome es un caso ficticio con datos sintéticos. Está diseñado para demos, formación y hackathons sobre agentes, preparación de datos, grounding, workflows y evaluación en Microsoft Foundry.
-
