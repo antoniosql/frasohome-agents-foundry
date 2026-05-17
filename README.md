@@ -91,7 +91,7 @@ Contrato de salida recomendado:
 
 ## Base de conocimiento
 
-La carpeta `case/kb` contiene políticas internas en DOCX y su versión Markdown optimizada para File Search:
+La carpeta `case/kb` contiene políticas internas para File Search:
 
 - Política de devoluciones omnicanal.
 - Diccionario de KPIs y reglas de cálculo.
@@ -104,8 +104,6 @@ La carpeta `case/kb` contiene políticas internas en DOCX y su versión Markdown
 Para el agente `frasohome-knowledge`, cargar en File Search:
 
 - `case/fraso_home_caso.md`
-- `case/fraso_home_storytelling_foundry.md`
-- `case/kb/README.md`
 - todos los archivos de `case/kb/FS-KB-*.md`
 
 ## Datos
