@@ -1,157 +1,151 @@
-# FraSoHome Agents Foundry
+# 🏠 FraSoHome Agents Foundry
 
-Demo técnica para construir un sistema de agentes en Microsoft Foundry a partir de un caso retail omnicanal ficticio: **FraSoHome**, una cadena de hogar y decoración con tiendas físicas, e-commerce, CRM, inventario, pagos, devoluciones y problemas realistas de calidad de datos.
+## Una sesión práctica para aterrizar agentes de IA en Microsoft Foundry
 
-El repositorio permite enseñar el mismo caso por dos caminos:
+**FraSoHome** es un retailer ficticio de hogar y decoración que tiene un problema muy real: vende en tienda y online, gestiona clientes en CRM, opera stock y devoluciones, tiene políticas internas... pero sus datos y decisiones viven repartidos entre sistemas.
 
-- **Portal de Microsoft Foundry:** diseñador de agentes, File Search, Code Interpreter, workflows visuales, Playground y trazas.
-- **Código Python:** creación de agentes con SDK, carga de conocimiento, análisis de CSVs, ejecución de prompts y orquestación multiagente.
+Esta sesión convierte ese caos operativo en una demo guiada de **Microsoft Foundry Agent Service**, mostrando cómo diseñar agentes con conocimiento, herramientas, workflows, trazabilidad y código.
 
-## Caso de negocio
+> 🎯 La promesa de la sesión: salir sabiendo explicar, diseñar y construir una solución multiagente realista, no solo un chatbot bonito.
 
-FraSoHome tiene datos suficientes para tomar mejores decisiones, pero están repartidos entre sistemas y no forman una verdad operativa común:
+## 🚀 Qué vas a construir
 
-- CRM y fidelización.
-- POS de tienda física.
-- Pedidos y pagos e-commerce.
-- Devoluciones online y en tienda.
-- Catálogo, SKUs, productos y stock.
-- Políticas internas de operación, devolución, KPIs, pagos y atención.
+Durante la sesión se construye un sistema de agentes para responder preguntas como:
 
-El objetivo de la demo es construir un sistema agentic que responda preguntas de negocio con evidencia:
+- 🧾 “Un cliente compró un sofá online, quiere devolverlo en tienda y usó un cupón. ¿Qué pasos debe seguir atención al cliente?”
+- 📊 “¿Qué problemas de calidad tienen los CSV antes de crear dashboards o modelos?”
+- 🔁 “¿Por qué están subiendo las devoluciones online en iluminación y qué hacemos esta semana?”
 
-- ¿Qué política aplica a una devolución omnicanal?
-- ¿Qué problemas de calidad tienen los datos?
-- ¿Por qué podrían subir las devoluciones online en una categoría?
-- ¿Qué acción de 7 días recomendaríamos y con qué métrica de seguimiento?
+La demo enseña dos formas de llegar al mismo resultado:
 
-## Arquitectura de agentes
-
-La demo propone un sistema multiagente con especialistas:
-
-| Agente | Función | Herramienta principal |
+| Ruta | Qué muestra | Para quién brilla |
 |---|---|---|
-| `frasohome-knowledge` | Responde sobre políticas, FAQ y contexto del caso | File Search |
-| `frasohome-data-quality` | Perfila CSVs, detecta nulos, duplicados y anomalías | Code Interpreter |
-| `frasohome-returns` | Analiza devoluciones, motivos, canales y reglas aplicables | File Search / contexto |
-| `frasohome-operations` | Revisa stock, tienda, pagos, conciliación, pedidos y SKUs | File Search / contexto |
-| `frasohome-storyteller` | Sintetiza evidencias en una recomendación ejecutiva | Sin herramienta |
-| `frasohome-orchestrator` | Coordina especialistas y aplica validación humana si baja la confianza | Workflow o Python |
+| 🖱️ **Interfaz gráfica de Foundry** | Agent Designer, File Search, Code Interpreter, Workflows, Playground y trazas | Perfiles de negocio, preventa, arquitectura, formación |
+| 🐍 **Python + Notebook** | SDK, creación de agentes, perfilado local, orquestador multiagente y ejecución reproducible | Desarrolladores, data/AI engineers, hackathons |
 
-Contrato de salida recomendado:
+## 🧩 El caso FraSoHome
 
-```json
-{
-  "pregunta": "",
-  "causa_probable": "",
-  "evidencias": [
-    {
-      "fuente": "",
-      "calculo": "",
-      "valor": ""
-    }
-  ],
-  "riesgos": [],
-  "accion_7_dias": "",
-  "metrica_seguimiento": "",
-  "requiere_validacion_humana": true
-}
-```
+FraSoHome opera como muchas empresas reales:
 
-## Estructura del repositorio
+- 🛒 **E-commerce:** pedidos, líneas de pedido, pagos y devoluciones online.
+- 🏬 **Tiendas físicas:** ventas POS, caja, pagos mixtos y devoluciones en tienda.
+- 👤 **CRM:** clientes, fidelización, preferencias y segmentación.
+- 📦 **ERP / inventario:** productos, SKUs, catálogo y stock diario.
+- 📚 **Políticas internas:** devoluciones, KPIs, caja, conciliación, catálogo y atención.
+
+El reto no es “preguntarle cosas a una IA”. El reto es diseñar un sistema que:
+
+- encuentre la política correcta,
+- calcule evidencias con datos,
+- separe hipótesis de hechos,
+- proponga acciones medibles,
+- y deje trazabilidad para revisar qué ha pasado.
+
+## 🤖 Agentes de la demo
+
+| Agente | Responsabilidad | Herramienta |
+|---|---|---|
+| 🧠 `frasohome-knowledge` | Responde con grounding sobre caso y políticas internas | File Search |
+| 🔎 `frasohome-data-quality` | Analiza CSVs y genera Data Quality Report | Code Interpreter |
+| 🔁 `frasohome-returns` | Interpreta devoluciones, motivos, reglas y riesgos | File Search / contexto |
+| ⚙️ `frasohome-operations` | Revisa stock, tienda, pagos, conciliación, pedidos y SKUs | File Search / contexto |
+| ✍️ `frasohome-storyteller` | Convierte evidencias en recomendación ejecutiva | Síntesis |
+| 🧭 `frasohome-orchestrator` | Coordina especialistas y activa validación humana | Workflow / Python |
+
+## 🎬 Storytelling de la sesión
+
+### Escena 1 · “Preguntamos a FraSoHome” 🧠
+
+Creamos un agente de conocimiento que responde usando documentos, no memoria del modelo. El público ve cómo File Search convierte políticas internas en respuestas operativas trazables.
+
+### Escena 2 · “Miramos los datos” 📊
+
+Creamos un agente con Code Interpreter que lee los CSV, ejecuta Python y genera un informe de calidad: nulos, duplicados, formatos, anomalías y acciones priorizadas.
+
+### Escena 3 · “Orquestamos especialistas” 🧭
+
+Lanzamos una pregunta ambigua sobre devoluciones online. El sistema reparte trabajo entre agentes y devuelve causa probable, evidencias, riesgos, acción de 7 días y métrica de seguimiento.
+
+## 📦 Qué incluye este repositorio
 
 ```text
 .
-├── agents.md
-├── README.md
-├── README_CODE.md
-├── requirements.txt
-├── pyproject.toml
-├── .env.example
+├── README.md                         # Esta presentación del repo
+├── README_PORTAL.md                  # Paso a paso con interfaz gráfica
+├── README_NOTEBOOK.md                # Paso a paso con notebook y código
+├── README_CODE.md                    # Guía técnica del scaffold Python
+├── agents.md                         # Playbook de agentes y buenas prácticas
 ├── notebooks/
 │   └── frasohome_foundry_agents_demo.ipynb
 ├── case/
 │   ├── fraso_home_caso.md
 │   ├── fraso_home_storytelling_foundry.md
-│   ├── plan_sesion_practica_foundry_frasohome.md
-│   ├── paso_a_paso_portal_foundry_agents_workflows.md
-│   ├── data/
-│   │   └── *.csv
-│   └── kb/
-│       ├── README.md
-│       ├── *.docx
-│       ├── FS-KB-*.md
-└── src/
-    └── frasohome_agents/
-        ├── cli.py
-        ├── create_agents.py
-        ├── foundry.py
-        ├── local_data_quality.py
-        ├── orchestrator.py
-        └── prompts.py
+│   ├── data/                         # CSVs sintéticos
+│   └── kb/                           # Políticas DOCX + Markdown
+└── src/frasohome_agents/             # Código Python de la demo
 ```
 
-## Base de conocimiento
+## 🧠 Base de conocimiento
 
-La carpeta `case/kb` contiene políticas internas para File Search:
+La carpeta [`case/kb`](case/kb) incluye políticas y guías internas:
 
-- Política de devoluciones omnicanal.
-- Diccionario de KPIs y reglas de cálculo.
-- Manual de tienda, caja y pagos mixtos.
-- Guía de conciliación de pagos e-commerce.
-- Taxonomía de catálogo y reglas SKU.
-- Guía de fidelización CRM.
-- FAQ interna de operaciones y atención.
+- 📦 Política de devoluciones omnicanal.
+- 📐 Diccionario de KPIs y reglas de cálculo.
+- 🏬 Manual de tienda, caja y pagos mixtos.
+- 💳 Guía de conciliación de pagos e-commerce.
+- 🏷️ Taxonomía de catálogo y reglas SKU.
+- ⭐ Guía de fidelización CRM.
+- 🙋 FAQ interna de operaciones y atención.
 
-Para el agente `frasohome-knowledge`, cargar en File Search:
+Estos documentos se cargan en File Search para que el agente `frasohome-knowledge` responda con evidencia.
 
-- `case/fraso_home_caso.md`
-- todos los archivos de `case/kb/FS-KB-*.md`
+## 📊 Datos sintéticos
 
-## Datos
+La carpeta [`case/data`](case/data) contiene CSVs de CRM, pedidos, POS, pagos, devoluciones, productos, stock y fact table.
 
-Los CSV sintéticos están en `case/data` e incluyen:
+Incluyen problemas intencionados para la demo:
 
-- `crm.csv`
-- `pedidos.csv`
-- `lineas_pedido.csv`
-- `devoluciones_online.csv`
-- `devoluciones_tienda.csv`
-- `ventas_pos.csv`
-- `pagos_tienda.csv`
-- `productos.csv`
-- `stock_diario.csv`
-- `tiendas.csv`
-- `fact_transacciones.csv`
+- valores nulos,
+- duplicados,
+- claves inconsistentes,
+- formatos de fecha heterogéneos,
+- importes/cantidades anómalas,
+- stock irregular.
 
-El caso incluye problemas intencionados de calidad: nulos, duplicados, claves inconsistentes, formatos heterogéneos, fechas problemáticas, importes/cantidades anómalas y stock irregular.
+## 🛣️ Elige tu ruta
 
-## Quickstart por portal
+### 🖱️ Ruta 1: diseñador gráfico de Foundry
 
-Sigue el paso a paso:
+Ideal para enseñar la demo en vivo desde el portal.
 
-[case/paso_a_paso_portal_foundry_agents_workflows.md](case/paso_a_paso_portal_foundry_agents_workflows.md)
+👉 [README_PORTAL.md](README_PORTAL.md)
 
-Resumen:
+Incluye:
 
-1. Crear `frasohome-knowledge` con File Search y cargar caso + KB.
-2. Crear `frasohome-data-quality` con Code Interpreter y cargar CSVs.
-3. Crear especialistas `returns`, `operations` y `storyteller`.
-4. Crear workflow `frasohome-orchestrator`.
-5. Probar los prompts canónicos en Playground.
-6. Mostrar historial, tool calls, trazas u observabilidad.
+- creación de agentes,
+- configuración de File Search,
+- configuración de Code Interpreter,
+- creación de especialistas,
+- diseño del workflow visual,
+- prompts de prueba,
+- checklist de sesión.
 
-## Quickstart por código
+### 🐍 Ruta 2: notebook + Python
 
-Consulta la guía detallada:
+Ideal para una sesión hands-on técnica o hackathon.
 
-[README_CODE.md](README_CODE.md)
+👉 [README_NOTEBOOK.md](README_NOTEBOOK.md)
 
-También puedes ejecutar la demo paso a paso desde el notebook:
+Incluye:
 
-[notebooks/frasohome_foundry_agents_demo.ipynb](notebooks/frasohome_foundry_agents_demo.ipynb)
+- preparación del entorno,
+- ejecución del notebook,
+- explicación de cada módulo Python,
+- perfilado local con pandas,
+- creación de agentes por SDK,
+- ejecución del orquestador multiagente.
 
-Preparación rápida:
+## ⚡ Quickstart código
 
 ```powershell
 python -m venv .venv
@@ -162,83 +156,54 @@ copy .env.example .env
 az login
 ```
 
-Edita `.env`:
+Configura `.env`:
 
-```powershell
+```text
 PROJECT_ENDPOINT=https://<resource>.services.ai.azure.com/api/projects/<project>
 MODEL_DEPLOYMENT=<deployment-name>
 ```
 
-Validar assets y perfilar datos localmente:
+Prueba sin llamar a Azure:
 
 ```powershell
 frasohome-agents check-assets
 frasohome-agents local-profile
-```
-
-Previsualizar y crear agentes:
-
-```powershell
 frasohome-agents create-agents --dry-run
-frasohome-agents create-agents
 ```
 
-Ejecutar demos:
-
-```powershell
-frasohome-agents demo-knowledge
-frasohome-agents demo-data-quality
-frasohome-agents demo-orchestrator
-```
-
-## Prompts canónicos
-
-Knowledge:
+## 🧪 Prompts canónicos
 
 ```text
 Un cliente compró un sofá online, quiere devolverlo en tienda y usó un cupón. ¿Qué pasos debe seguir atención al cliente?
 ```
 
-Data Quality:
-
 ```text
 Analiza los CSV de FraSoHome. Genera un Data Quality Report con tabla resumen y cinco acciones de limpieza priorizadas antes de crear features o dashboards.
 ```
-
-Multiagente:
 
 ```text
 ¿Por qué están subiendo las devoluciones online en iluminación y qué haríamos esta semana?
 ```
 
-## Documentación del repo
+## ✅ Lo que se aprende
 
-- [agents.md](agents.md): playbook de desarrollo de agentes en Foundry.
-- [README_CODE.md](README_CODE.md): ejecución por código con Python.
-- [case/plan_sesion_practica_foundry_frasohome.md](case/plan_sesion_practica_foundry_frasohome.md): plan de sesión práctica.
-- [case/paso_a_paso_portal_foundry_agents_workflows.md](case/paso_a_paso_portal_foundry_agents_workflows.md): guía portal paso a paso.
-- [case/fraso_home_caso.md](case/fraso_home_caso.md): caso base convertido a Markdown.
-- [case/fraso_home_storytelling_foundry.md](case/fraso_home_storytelling_foundry.md): storytelling extraído de la presentación.
-- [case/kb/README.md](case/kb/README.md): índice de políticas y guías.
+- Cuándo usar prompt agents, workflow agents o código.
+- Cómo hacer grounding documental con File Search.
+- Cómo usar Code Interpreter para análisis real de datos.
+- Cómo diseñar contratos JSON entre agentes.
+- Cómo separar reglas, cálculo, razonamiento y síntesis.
+- Cómo mostrar trazabilidad, tool calls y validación humana.
+- Cómo pasar de una demo visual a una implementación reproducible.
 
-## Buenas prácticas incluidas
+## 🧭 Material de apoyo
 
-- Separación entre conocimiento, cálculo y síntesis.
-- File Search para grounding documental.
-- Code Interpreter para cálculos sobre CSVs.
-- Contratos JSON entre agentes.
-- Validación humana cuando hay baja confianza o conflicto documental.
-- Uso de Entra ID/RBAC en lugar de secretos embebidos.
-- Trazabilidad de tool calls y conversaciones.
-- Preparación para observabilidad y evaluación.
+- [README_PORTAL.md](README_PORTAL.md): paso a paso con interfaz gráfica.
+- [README_NOTEBOOK.md](README_NOTEBOOK.md): paso a paso con notebook y módulos Python.
+- [README_CODE.md](README_CODE.md): guía técnica de ejecución por código.
+- [agents.md](agents.md): playbook de desarrollo de agentes.
+- [case/plan_sesion_practica_foundry_frasohome.md](case/plan_sesion_practica_foundry_frasohome.md): plan de sesión.
+- [case/paso_a_paso_portal_foundry_agents_workflows.md](case/paso_a_paso_portal_foundry_agents_workflows.md): guía portal extendida.
 
-## Requisitos
+## 📝 Nota
 
-- Python 3.10 o superior.
-- Proyecto de Microsoft Foundry con modelo desplegado.
-- Permisos para crear agentes, cargar archivos y ejecutar herramientas.
-- Azure CLI autenticado con `az login`.
-
-## Nota
-
-FraSoHome es un caso ficticio con datos sintéticos. Está diseñado para demos, formación y hackathons sobre agentes, preparación de datos, grounding, workflows y evaluación en Microsoft Foundry.
+FraSoHome es un caso ficticio con datos sintéticos. Está diseñado para formación, demos y hackathons sobre Microsoft Foundry, agentes, grounding, workflows, análisis de datos y evaluación.
